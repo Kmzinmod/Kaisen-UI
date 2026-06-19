@@ -1,0 +1,1261 @@
+═══════════════════════════════════════════════════════════════════
+                    KAISEN UI FRAMEWORK V2.0
+                   MANUAL COMPLETO E DETALHADO
+              DO BÁSICO AO AVANÇADO - TUDO QUE VOCÊ PRECISA
+═══════════════════════════════════════════════════════════════════
+
+
+╔════════════════════════════════════════════════════════════════╗
+║                     SUMÁRIO                                   ║
+╠════════════════════════════════════════════════════════════════╣
+║ 1. INTRODUÇÃO..................................... PÁGINA 1    ║
+║ 2. INSTALAÇÃO E CONFIGURAÇÃO...................... PÁGINA 2    ║
+║ 3. PERSONALIZAÇÃO VISUAL.......................... PÁGINA 4    ║
+║ 4. CRIAÇÃO DE SEÇÕES............................. PÁGINA 6    ║
+║ 5. ELEMENTOS (TOGGLES, BOTÕES, SLIDERS)........... PÁGINA 8   ║
+║ 6. ELEMENTOS (TEXTINPUT, DROPDOWN)............... PÁGINA 12   ║
+║ 7. COMANDOS E CONTROLE DA UI..................... PÁGINA 14   ║
+║ 8. EXEMPLOS PRÁTICOS............................. PÁGINA 16   ║
+║ 9. SCRIPTS PRONTOS PARA USAR..................... PÁGINA 20   ║
+║ 10. DICAS AVANÇADAS.............................. PÁGINA 24   ║
+║ 11. SOLUÇÃO DE PROBLEMAS......................... PÁGINA 26   ║
+║ 12. FAQ (PERGUNTAS FREQUENTES).................. PÁGINA 28   ║
+║ 13. REFERÊNCIA RÁPIDA............................ PÁGINA 30   ║
+╚════════════════════════════════════════════════════════════════╝
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 1. INTRODUÇÃO                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+O Kaisen UI Framework é uma ferramenta que permite criar interfaces
+gráficas (UI) para seus scripts no Roblox. Com ele, você pode:
+
+✅ Criar menus profissionais com poucas linhas de código
+✅ Adicionar botões, interruptores, sliders e muito mais
+✅ Personalizar cores, tamanhos e texto
+✅ Organizar seu script em seções
+✅ Salvar e carregar configurações
+✅ Criar qualquer tipo de script com interface amigável
+
+O framework foi projetado para ser:
+• FÁCIL - Simples de usar, mesmo para iniciantes
+• RÁPIDO - Poucas linhas de código para criar interfaces completas
+• FLEXÍVEL - Personalizável em todos os aspectos
+• PODEROSO - Suporta todos os elementos que você precisa
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 2. INSTALAÇÃO E CONFIGURAÇÃO                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+2.1 - INSTALAÇÃO BÁSICA
+
+Para usar o Kaisen UI, você precisa carregar o script. Copie e cole
+isso no início do seu script:
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL_DO_SCRIPT"))()
+───────────────────────────────────────────────────────────────────
+
+Isso já vai criar uma UI com as configurações padrão.
+
+2.2 - INSTALAÇÃO COM CONFIGURAÇÕES
+
+Para personalizar, você pode passar configurações:
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL_DO_SCRIPT"))({
+    Title = "Meu Script",           -- Título da janela
+    Subtitle = "v1.0",              -- Subtítulo
+    ToggleKey = Enum.KeyCode.G,     -- Tecla para abrir
+    MainColor = Color3.fromRGB(100, 180, 255), -- Cor principal
+    BackgroundColor = Color3.fromRGB(18, 18, 22), -- Fundo
+    SidebarColor = Color3.fromRGB(22, 22, 27), -- Barra lateral
+    ButtonColor = Color3.fromRGB(30, 30, 37), -- Botões
+    TextColor = Color3.fromRGB(200, 200, 210), -- Texto
+    Width = 550,                    -- Largura
+    Height = 400                    -- Altura
+})
+───────────────────────────────────────────────────────────────────
+
+2.3 - ONDE HOSPEDAR O SCRIPT
+
+Você pode hospedar o script em:
+• Pastebin (https://pastebin.com)
+• GitHub (https://github.com)
+• Controlc (https://controlc.com)
+• Qualquer serviço de hospedagem de texto
+
+2.4 - COMO PEGAR A URL
+
+No Pastebin:
+1. Cole o script
+2. Clique em "Create New Paste"
+3. Copie a URL (ex: https://pastebin.com/abc123)
+4. Use: loadstring(game:HttpGet("https://pastebin.com/raw/abc123"))()
+
+OBS: Use a URL "raw" do Pastebin para funcionar corretamente.
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 3. PERSONALIZAÇÃO VISUAL                                      │
+└─────────────────────────────────────────────────────────────────┘
+
+3.1 - CORES DISPONÍVEIS
+
+Todas as cores usam Color3.fromRGB(R, G, B) onde R, G, B são
+números de 0 a 255.
+
+CORES BÁSICAS:
+───────────────────────────────────────────────────────────────────
+Color3.fromRGB(255, 0, 0)       → Vermelho
+Color3.fromRGB(0, 255, 0)       → Verde
+Color3.fromRGB(0, 0, 255)       → Azul
+Color3.fromRGB(255, 255, 0)     → Amarelo
+Color3.fromRGB(255, 0, 255)     → Magenta (Roxo)
+Color3.fromRGB(0, 255, 255)     → Ciano
+Color3.fromRGB(255, 255, 255)   → Branco
+Color3.fromRGB(0, 0, 0)         → Preto
+───────────────────────────────────────────────────────────────────
+
+CORES PERSONALIZADAS:
+───────────────────────────────────────────────────────────────────
+Color3.fromRGB(255, 100, 100)   → Vermelho claro
+Color3.fromRGB(100, 255, 100)   → Verde claro
+Color3.fromRGB(100, 100, 255)   → Azul claro
+Color3.fromRGB(255, 165, 0)     → Laranja
+Color3.fromRGB(255, 192, 203)   → Rosa
+Color3.fromRGB(128, 0, 128)     → Roxo escuro
+Color3.fromRGB(255, 215, 0)     → Dourado
+Color3.fromRGB(0, 255, 127)     → Verde primavera
+Color3.fromRGB(220, 20, 60)     → Carmesim
+Color3.fromRGB(30, 144, 255)    → Azul royal
+Color3.fromRGB(255, 140, 0)     → Laranja escuro
+Color3.fromRGB(0, 191, 255)     → Azul céu
+Color3.fromRGB(50, 205, 50)     → Verde limão
+───────────────────────────────────────────────────────────────────
+
+3.2 - EXEMPLOS DE TEMAS
+
+TEMA NEON (AZUL/ROXO):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "Neon Script",
+    MainColor = Color3.fromRGB(0, 255, 255),
+    BackgroundColor = Color3.fromRGB(5, 5, 10),
+    SidebarColor = Color3.fromRGB(10, 10, 20),
+    ButtonColor = Color3.fromRGB(15, 15, 30)
+})
+
+TEMA FOGO (VERMELHO/LARANJA):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "🔥 Fire Script",
+    MainColor = Color3.fromRGB(255, 100, 0),
+    BackgroundColor = Color3.fromRGB(20, 5, 5),
+    SidebarColor = Color3.fromRGB(30, 10, 5),
+    ButtonColor = Color3.fromRGB(40, 15, 10)
+})
+
+TEMA NATUREZA (VERDE):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "🌿 Nature Script",
+    MainColor = Color3.fromRGB(0, 255, 0),
+    BackgroundColor = Color3.fromRGB(5, 20, 5),
+    SidebarColor = Color3.fromRGB(10, 30, 10),
+    ButtonColor = Color3.fromRGB(15, 40, 15)
+})
+
+TEMA ESCURO (CINZA):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "Dark Script",
+    MainColor = Color3.fromRGB(150, 150, 150),
+    BackgroundColor = Color3.fromRGB(10, 10, 10),
+    SidebarColor = Color3.fromRGB(15, 15, 15),
+    ButtonColor = Color3.fromRGB(25, 25, 25)
+})
+
+3.3 - TAMANHO DA UI
+
+Você pode mudar o tamanho com Width e Height:
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Width = 700,   -- Mais largo
+    Height = 500   -- Mais alto
+})
+
+UI PEQUENA (300x250):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Width = 300,
+    Height = 250
+})
+
+UI GRANDE (800x600):
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Width = 800,
+    Height = 600
+})
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 4. CRIAÇÃO DE SEÇÕES                                          │
+└─────────────────────────────────────────────────────────────────┘
+
+4.1 - O QUE SÃO SEÇÕES?
+
+Seções são abas no menu lateral que organizam seu script.
+Cada seção pode ter seus próprios elementos.
+
+4.2 - SINTAXE BÁSICA
+
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSection("Nome da Seção", "ÍCONE", function(section)
+    -- Coloque seus elementos aqui
+end)
+───────────────────────────────────────────────────────────────────
+
+4.3 - EXEMPLOS DE SEÇÕES
+
+SEÇÃO PRINCIPAL:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSection("Principal", "🏠", function(section)
+    KaisenUI:AddButton("Iniciar", section, function()
+        print("Iniciado!")
+    end)
+end)
+
+SEÇÃO DE CONFIGURAÇÕES:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSection("Configurações", "⚙️", function(section)
+    KaisenUI:AddToggle("Ativar", section, function(enabled)
+        print("Ativado: " .. tostring(enabled))
+    end)
+end)
+
+SEÇÃO DE TELEPORTE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSection("Teleport", "📍", function(section)
+    KaisenUI:AddButton("Ir para Base", section, function()
+        -- Teleporta para a base
+    end)
+end)
+
+4.4 - ÍCONES QUE VOCÊ PODE USAR
+
+ÍCONES POPULARES:
+───────────────────────────────────────────────────────────────────
+🏠 Casa / Principal
+⚙️ Engrenagem / Configurações
+📁 Arquivo / Pastas
+💾 Salvar
+📂 Carregar
+🔧 Ferramentas
+🎮 Jogo / Controle
+👤 Perfil / Jogador
+💰 Dinheiro / Farm
+📍 Localização / Teleport
+🔒 Travar / Segurança
+🔓 Destravar
+❤️ Coração / Vida
+⚡ Energia / Rápido
+🔥 Fogo / Poder
+💀 Morte / Perigo
+⭐ Favorito / Estrela
+👑 Rei / Premium
+🎯 Alvo / Precisão
+📊 Gráficos / Estatísticas
+📝 Texto / Notas
+🎨 Arte / Desenho
+🎵 Música / Som
+📡 Sinal / Conexão
+🚀 Foguete / Rápido
+🛡️ Escudo / Proteção
+🗡️ Espada / Ataque
+🏆 Troféu / Conquista
+💎 Diamante / Precioso
+
+4.5 - MÚLTIPLAS SEÇÕES
+
+Você pode ter quantas seções quiser:
+
+───────────────────────────────────────────────────────────────────
+-- Seção 1
+KaisenUI:AddSection("Início", "🏠", function(section)
+    -- Conteúdo
+end)
+
+-- Seção 2
+KaisenUI:AddSection("Player", "👤", function(section)
+    -- Conteúdo
+end)
+
+-- Seção 3
+KaisenUI:AddSection("Farm", "💰", function(section)
+    -- Conteúdo
+end)
+
+-- Seção 4
+KaisenUI:AddSection("Teleport", "📍", function(section)
+    -- Conteúdo
+end)
+
+-- Seção 5
+KaisenUI:AddSection("Config", "⚙️", function(section)
+    -- Conteúdo
+end)
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 5. ELEMENTOS - TOGGLES, BOTÕES E SLIDERS                      │
+└─────────────────────────────────────────────────────────────────┘
+
+5.1 - TOGGLE (INTERRUPTOR LIGA/DESLIGA)
+
+O toggle é um botão que alterna entre ligado e desligado.
+
+SINTAXE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddToggle("Nome do Toggle", section, function(estado)
+    -- estado = true ou false
+    if estado then
+        print("Ligado!")
+    else
+        print("Desligado!")
+    end
+end)
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO PRÁTICO - AUTO FARM:
+───────────────────────────────────────────────────────────────────
+local farmAtivo = false
+
+KaisenUI:AddToggle("Auto Farm", section, function(estado)
+    farmAtivo = estado
+    if estado then
+        print("Auto Farm LIGADO")
+        -- Iniciar farm
+        while farmAtivo do
+            -- Código do farm
+            wait(1)
+        end
+    else
+        print("Auto Farm DESLIGADO")
+    end
+end)
+
+EXEMPLO PRÁTICO - GOD MODE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddToggle("God Mode", section, function(estado)
+    local player = game.Players.LocalPlayer
+    if estado then
+        player.Character.Humanoid.MaxHealth = math.huge
+        player.Character.Humanoid.Health = math.huge
+    else
+        player.Character.Humanoid.MaxHealth = 100
+        player.Character.Humanoid.Health = 100
+    end
+end)
+
+5.2 - BUTTON (BOTÃO NORMAL)
+
+Botão que executa uma ação quando clicado.
+
+SINTAXE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddButton("Nome do Botão", section, function()
+    -- Código executado ao clicar
+    print("Botão clicado!")
+end)
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO PRÁTICO - TELEPORTE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddButton("Teleportar para Base", section, function()
+    local player = game.Players.LocalPlayer
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(0, 10, 0)
+    print("Teleportado!")
+end)
+
+EXEMPLO PRÁTICO - KILL ALL:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddButton("Matar Todos", section, function()
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer then
+            v.Character.Humanoid.Health = 0
+        end
+    end
+    print("Todos mortos!")
+end)
+
+EXEMPLO PRÁTICO - RESETAR:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddButton("Resetar Jogo", section, function()
+    game:GetService("ReplicatedStorage"):FindFirstChild("Reset"):FireServer()
+end)
+
+5.3 - SLIDER (CONTROLE DESLIZANTE)
+
+Slider permite escolher um valor arrastando uma barra.
+
+SINTAXE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSlider("Nome", MÍNIMO, MÁXIMO, PADRÃO, section, function(valor)
+    -- valor é o número selecionado
+    print("Valor: " .. valor)
+end)
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO PRÁTICO - VELOCIDADE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSlider("WalkSpeed", 0, 100, 16, section, function(valor)
+    local player = game.Players.LocalPlayer
+    player.Character.Humanoid.WalkSpeed = valor
+end)
+
+EXEMPLO PRÁTICO - SALTO:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSlider("JumpPower", 0, 200, 50, section, function(valor)
+    local player = game.Players.LocalPlayer
+    player.Character.Humanoid.JumpPower = valor
+end)
+
+EXEMPLO PRÁTICO - CAMERA:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSlider("Zoom", 1, 20, 10, section, function(valor)
+    workspace.CurrentCamera.FieldOfView = valor
+end)
+
+EXEMPLO PRÁTICO - BRILHO:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddSlider("Brilho", 0, 10, 3, section, function(valor)
+    game.Lighting.Brightness = valor
+end)
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 6. ELEMENTOS - TEXTINPUT E DROPDOWN                           │
+└─────────────────────────────────────────────────────────────────┘
+
+6.1 - TEXTINPUT (CAMPO DE TEXTO)
+
+Campo onde o usuário pode digitar texto.
+
+SINTAXE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddTextInput("Nome", "Placeholder", section, function(texto)
+    print("Texto digitado: " .. texto)
+end)
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO PRÁTICO - EXECUTAR COMANDOS:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddTextInput("Comando", "Digite seu comando", section, function(texto)
+    -- Executa o comando digitado
+    loadstring(texto)()
+end)
+
+EXEMPLO PRÁTICO - CHAT:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddTextInput("Mensagem", "Digite sua mensagem", section, function(texto)
+    game:GetService("ReplicatedStorage"):FindFirstChild("Chat"):FireServer(texto)
+end)
+
+EXEMPLO PRÁTICO - NOME PERSONALIZADO:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddTextInput("Nome", "Digite seu nome", section, function(texto)
+    game.Players.LocalPlayer.Character.Humanoid.Name = texto
+end)
+
+6.2 - DROPDOWN (MENU DE OPÇÕES)
+
+Menu que permite escolher uma opção de uma lista.
+
+SINTAXE:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddDropdown("Nome", {"Opção1", "Opção2", "Opção3"}, "Padrão", section, function(escolhido)
+    print("Você escolheu: " .. escolhido)
+end)
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO PRÁTICO - MODO DE JOGO:
+───────────────────────────────────────────────────────────────────
+KaisenUI:AddDropdown("Modo", {"Fácil", "Médio", "Difícil", "Extremo"}, "Médio", section, function(escolhido)
+    if escolhido == "Fácil" then
+        -- Configurar modo fácil
+    elseif escolhido == "Médio" then
+        -- Configurar modo médio
+    elseif escolhido == "Difícil" then
+        -- Configurar modo difícil
+    elseif escolhido == "Extremo" then
+        -- Configurar modo extremo
+    end
+end)
+
+EXEMPLO PRÁTICO - LOCALIZAÇÕES:
+───────────────────────────────────────────────────────────────────
+local locais = {"Base", "Farm", "PvP", "Spawn", "Loja"}
+
+KaisenUI:AddDropdown("Local", locais, "Base", section, function(escolhido)
+    print("Indo para: " .. escolhido)
+    -- Teleporta para o local escolhido
+end)
+
+EXEMPLO PRÁTICO - ARMAS:
+───────────────────────────────────────────────────────────────────
+local armas = {"Espada", "Arco", "Machado", "Pistola", "Rifle"}
+
+KaisenUI:AddDropdown("Arma", armas, "Espada", section, function(escolhido)
+    -- Equipa a arma escolhida
+    print("Equipando: " .. escolhido)
+end)
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 7. COMANDOS E CONTROLE DA UI                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+7.1 - MOSTRAR UI
+
+───────────────────────────────────────────────────────────────────
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO:
+KaisenUI:Show()  -- Mostra a UI na tela
+
+7.2 - ESCONDER UI
+
+───────────────────────────────────────────────────────────────────
+KaisenUI:Hide()
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO:
+KaisenUI:Hide()  -- Esconde a UI
+
+7.3 - ALTERNAR UI
+
+───────────────────────────────────────────────────────────────────
+KaisenUI:Toggle()
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO:
+KaisenUI:Toggle()  -- Alterna entre mostrar e esconder
+
+7.4 - DESTRUIR UI
+
+───────────────────────────────────────────────────────────────────
+KaisenUI:Destroy()
+───────────────────────────────────────────────────────────────────
+
+EXEMPLO:
+KaisenUI:Destroy()  -- Remove completamente a UI
+
+7.5 - USANDO TECLAS DE ATALHO
+
+Você pode usar a tecla configurada (ToggleKey) para abrir/fechar:
+
+───────────────────────────────────────────────────────────────────
+-- Configurado como G
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    ToggleKey = Enum.KeyCode.G
+})
+
+-- Agora pressionar G abre/fecha a UI
+───────────────────────────────────────────────────────────────────
+
+7.6 - CRIANDO BOTÃO PARA ABRIR/FECHAR
+
+───────────────────────────────────────────────────────────────────
+-- Botão para mostrar
+KaisenUI:AddButton("Mostrar UI", section, function()
+    KaisenUI:Show()
+end)
+
+-- Botão para esconder
+KaisenUI:AddButton("Esconder UI", section, function()
+    KaisenUI:Hide()
+end)
+
+-- Botão para alternar
+KaisenUI:AddButton("Toggle UI", section, function()
+    KaisenUI:Toggle()
+end)
+
+7.7 - SALVAR ESTADO DA UI
+
+Para salvar se a UI está aberta ou fechada:
+
+───────────────────────────────────────────────────────────────────
+local uiAberta = false
+
+KaisenUI:AddButton("Abrir UI", section, function()
+    KaisenUI:Show()
+    uiAberta = true
+end)
+
+KaisenUI:AddButton("Fechar UI", section, function()
+    KaisenUI:Hide()
+    uiAberta = false
+end)
+
+-- Verificar estado
+if uiAberta then
+    print("UI está aberta")
+else
+    print("UI está fechada")
+end
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 8. EXEMPLOS PRÁTICOS                                          │
+└─────────────────────────────────────────────────────────────────┘
+
+8.1 - SCRIPT DE ADMIN COMPLETO
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "⚡ Admin Commands",
+    Subtitle = "v1.0",
+    MainColor = Color3.fromRGB(255, 0, 0),
+    ToggleKey = Enum.KeyCode.G
+})
+
+-- Seção de Player
+KaisenUI:AddSection("Player", "👤", function(section)
+    -- God Mode
+    KaisenUI:AddToggle("God Mode", section, function(estado)
+        local player = game.Players.LocalPlayer
+        if estado then
+            player.Character.Humanoid.MaxHealth = math.huge
+            player.Character.Humanoid.Health = math.huge
+        else
+            player.Character.Humanoid.MaxHealth = 100
+            player.Character.Humanoid.Health = 100
+        end
+    end)
+    
+    -- Invisível
+    KaisenUI:AddToggle("Invisível", section, function(estado)
+        local player = game.Players.LocalPlayer
+        if estado then
+            player.Character.HumanoidRootPart.Transparency = 1
+        else
+            player.Character.HumanoidRootPart.Transparency = 0
+        end
+    end)
+    
+    -- Velocidade
+    KaisenUI:AddSlider("Velocidade", 0, 200, 16, section, function(valor)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = valor
+    end)
+    
+    -- Salto
+    KaisenUI:AddSlider("Salto", 0, 300, 50, section, function(valor)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = valor
+    end)
+end)
+
+-- Seção de Teleport
+KaisenUI:AddSection("Teleport", "📍", function(section)
+    -- Botões de teleporte
+    KaisenUI:AddButton("Ir para Base", section, function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 10, 0)
+    end)
+    
+    KaisenUI:AddButton("Ir para Farm", section, function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(100, 10, 0)
+    end)
+    
+    KaisenUI:AddButton("Ir para PvP", section, function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(200, 10, 0)
+    end)
+    
+    -- Teleport com coordenadas
+    KaisenUI:AddTextInput("Coordenadas", "X, Y, Z", section, function(texto)
+        local coords = {}
+        for coord in string.gmatch(texto, "([^,]+)") do
+            table.insert(coords, tonumber(coord))
+        end
+        if #coords == 3 then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 
+                CFrame.new(coords[1], coords[2], coords[3])
+        end
+    end)
+end)
+
+-- Seção de Comandos
+KaisenUI:AddSection("Comandos", "⌨️", function(section)
+    -- Executar comandos
+    KaisenUI:AddTextInput("Comando", "Digite um comando Lua", section, function(texto)
+        local success, error = pcall(function()
+            loadstring(texto)()
+        end)
+        if not success then
+            print("Erro no comando: " .. tostring(error))
+        end
+    end)
+    
+    -- Matar todos
+    KaisenUI:AddButton("Matar Todos", section, function()
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer then
+                pcall(function()
+                    v.Character.Humanoid.Health = 0
+                end)
+            end
+        end
+    end)
+end)
+
+-- Seção de Configurações
+KaisenUI:AddSection("Config", "⚙️", function(section)
+    -- Notificações
+    KaisenUI:AddToggle("Notificações", section, function(estado)
+        print("Notificações: " .. tostring(estado))
+    end)
+    
+    -- Reiniciar UI
+    KaisenUI:AddButton("Reiniciar UI", section, function()
+        KaisenUI:Destroy()
+        -- Recarregar
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+8.2 - SCRIPT DE FARM AUTOMÁTICO
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "💰 Auto Farm",
+    Subtitle = "v2.0",
+    MainColor = Color3.fromRGB(0, 255, 0),
+    ToggleKey = Enum.KeyCode.F
+})
+
+local farmAtivo = false
+local farmando = false
+
+-- Seção Principal
+KaisenUI:AddSection("Farm", "💰", function(section)
+    -- Toggle Farm
+    KaisenUI:AddToggle("Auto Farm", section, function(estado)
+        farmAtivo = estado
+        if estado then
+            print("Farm LIGADO")
+            farmando = true
+            while farmando do
+                -- Código de farm aqui
+                print("Farmando...")
+                wait(1)
+            end
+        else
+            print("Farm DESLIGADO")
+            farmando = false
+        end
+    end)
+    
+    -- Velocidade do Farm
+    KaisenUI:AddSlider("Velocidade Farm", 1, 10, 5, section, function(valor)
+        print("Velocidade: " .. valor)
+    end)
+    
+    -- Botão Coletar
+    KaisenUI:AddButton("Coletar Tudo", section, function()
+        print("Coletando tudo...")
+        -- Código de coleta
+    end)
+end)
+
+-- Seção de Configurações
+KaisenUI:AddSection("Config", "⚙️", function(section)
+    -- Modo de Farm
+    KaisenUI:AddDropdown("Modo Farm", {"Rápido", "Normal", "Lento"}, "Normal", section, function(escolhido)
+        print("Modo: " .. escolhido)
+    end)
+    
+    -- Itens para farmar
+    KaisenUI:AddDropdown("Item", {"Moedas", "XP", "Gemas"}, "Moedas", section, function(escolhido)
+        print("Farmando: " .. escolhido)
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+8.3 - SCRIPT DE ESPECTADOR (SPECTATE)
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "👀 Spectate",
+    Subtitle = "v1.0",
+    MainColor = Color3.fromRGB(255, 165, 0)
+})
+
+local alvos = {}
+for _, v in pairs(game.Players:GetPlayers()) do
+    if v ~= game.Players.LocalPlayer then
+        table.insert(alvos, v.Name)
+    end
+end
+
+KaisenUI:AddSection("Spectate", "👀", function(section)
+    KaisenUI:AddDropdown("Jogador", alvos, alvos[1] or "Nenhum", section, function(escolhido)
+        local alvo = game.Players:FindFirstChild(escolhido)
+        if alvo and alvo.Character then
+            workspace.CurrentCamera.CameraSubject = alvo.Character.Humanoid
+            print("Observando: " .. escolhido)
+        end
+    end)
+    
+    KaisenUI:AddButton("Parar Spectate", section, function()
+        workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+        print("Parou de observar")
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 9. SCRIPTS PRONTOS PARA USAR                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+9.1 - SCRIPT DE VELOCIDADE E SALTO
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "🏃 Speed & Jump",
+    ToggleKey = Enum.KeyCode.G
+})
+
+KaisenUI:AddSection("Controles", "🎮", function(section)
+    KaisenUI:AddSlider("WalkSpeed", 0, 200, 16, section, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+    
+    KaisenUI:AddSlider("JumpPower", 0, 300, 50, section, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+9.2 - SCRIPT DE LUZ E AMBIENTE
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "💡 Lighting Control",
+    MainColor = Color3.fromRGB(255, 255, 0)
+})
+
+KaisenUI:AddSection("Luz", "💡", function(section)
+    KaisenUI:AddSlider("Brilho", 0, 10, 3, section, function(v)
+        game.Lighting.Brightness = v
+    end)
+    
+    KaisenUI:AddSlider("Saturação", 0, 2, 1, section, function(v)
+        game.Lighting.Saturation = v
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+9.3 - SCRIPT DE TELEPORTE RÁPIDO
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "📍 Quick Teleport",
+    ToggleKey = Enum.KeyCode.T
+})
+
+local locais = {
+    "Base",
+    "Farm",
+    "PvP",
+    "Spawn",
+    "Loja",
+    "Mina",
+    "Floresta",
+    "Deserto"
+}
+
+local coordenadas = {
+    Base = CFrame.new(0, 10, 0),
+    Farm = CFrame.new(100, 10, 0),
+    PvP = CFrame.new(200, 10, 0),
+    Spawn = CFrame.new(300, 10, 0),
+    Loja = CFrame.new(400, 10, 0),
+    Mina = CFrame.new(500, 10, 0),
+    Floresta = CFrame.new(600, 10, 0),
+    Deserto = CFrame.new(700, 10, 0)
+}
+
+KaisenUI:AddSection("Teleport", "📍", function(section)
+    KaisenUI:AddDropdown("Local", locais, "Base", section, function(escolhido)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = coordenadas[escolhido]
+        print("Teleportado para: " .. escolhido)
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+9.4 - SCRIPT DE MACRO (AUTOMAÇÃO)
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "🔄 Macro Script",
+    ToggleKey = Enum.KeyCode.M
+})
+
+local macroAtivo = false
+
+KaisenUI:AddSection("Macro", "🔄", function(section)
+    KaisenUI:AddToggle("Ativar Macro", section, function(estado)
+        macroAtivo = estado
+        if estado then
+            print("Macro LIGADO")
+            while macroAtivo do
+                -- Simular clique
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, true, nil, 0)
+                wait(0.1)
+                game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 0, 0, false, nil, 0)
+                wait(0.5)
+            end
+        else
+            print("Macro DESLIGADO")
+        end
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+9.5 - SCRIPT DE ANTIGO (ANTIGO FPS)
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "🎮 FPS Booster",
+    MainColor = Color3.fromRGB(0, 255, 255)
+})
+
+KaisenUI:AddSection("Boost", "⚡", function(section)
+    KaisenUI:AddSlider("Render Distance", 1, 10, 5, section, function(v)
+        workspace.Terrain.RenderDistance = v * 100
+    end)
+    
+    KaisenUI:AddToggle("Modo Baixa Qualidade", section, function(estado)
+        if estado then
+            workspace.CurrentCamera.FieldOfView = 70
+            game.Lighting.GlobalShadows = false
+        else
+            workspace.CurrentCamera.FieldOfView = 90
+            game.Lighting.GlobalShadows = true
+        end
+    end)
+end)
+
+KaisenUI:Show()
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 10. DICAS AVANÇADAS                                           │
+└─────────────────────────────────────────────────────────────────┘
+
+10.1 - SALVAR E CARREGAR CONFIGURAÇÕES
+
+SALVAR CONFIGURAÇÕES:
+───────────────────────────────────────────────────────────────────
+local config = {
+    autoFarm = false,
+    velocidade = 16,
+    modo = "Normal"
+}
+
+-- Salvar quando o toggle mudar
+KaisenUI:AddToggle("Auto Farm", section, function(estado)
+    config.autoFarm = estado
+    saveConfig()
+end)
+
+function saveConfig()
+    local json = game:GetService("HttpService"):JSONEncode(config)
+    writefile("config.json", json)
+    print("Configuração salva!")
+end
+
+function loadConfig()
+    if isfile("config.json") then
+        local json = readfile("config.json")
+        config = game:GetService("HttpService"):JSONDecode(json)
+        print("Configuração carregada!")
+        -- Aplicar configurações
+    end
+end
+
+-- Carregar ao iniciar
+loadConfig()
+───────────────────────────────────────────────────────────────────
+
+10.2 - CRIAR SUA PRÓPRIA FUNÇÃO
+
+Você pode criar funções personalizadas:
+
+───────────────────────────────────────────────────────────────────
+function criarBotaoPersonalizado(nome, cor, section, acao)
+    local botao = Instance.new("TextButton")
+    botao.Size = UDim2.new(1, -10, 0, 45)
+    botao.BackgroundColor3 = cor
+    botao.Text = nome
+    botao.Parent = section
+    botao.MouseButton1Click:Connect(acao)
+    return botao
+end
+
+-- Usar:
+criarBotaoPersonalizado("Meu Botão", Color3.fromRGB(255,0,0), section, function()
+    print("Botão personalizado clicado!")
+end)
+───────────────────────────────────────────────────────────────────
+
+10.3 - COMBINAR ELEMENTOS
+
+Crie lógicas complexas combinando elementos:
+
+───────────────────────────────────────────────────────────────────
+local estadoAutoFarm = false
+local quantidadeItem = 0
+
+KaisenUI:AddToggle("Auto Farm", section, function(estado)
+    estadoAutoFarm = estado
+    if estado then
+        print("Farm iniciado!")
+        while estadoAutoFarm do
+            quantidadeItem = quantidadeItem + 1
+            print("Coletado: " .. quantidadeItem)
+            wait(1)
+        end
+    end
+end)
+
+KaisenUI:AddButton("Resetar Contador", section, function()
+    quantidadeItem = 0
+    print("Contador resetado!")
+end)
+───────────────────────────────────────────────────────────────────
+
+10.4 - ATUALIZAR UI EM TEMPO REAL
+
+Você pode atualizar valores automaticamente:
+
+───────────────────────────────────────────────────────────────────
+local valorLabel = nil
+
+-- Criar label para mostrar valor
+KaisenUI:AddSection("Status", "📊", function(section)
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, -10, 0, 30)
+    label.BackgroundColor3 = Color3.fromRGB(25, 25, 32)
+    label.Text = "Status: Aguardando..."
+    label.Parent = section
+    valorLabel = label
+end)
+
+-- Atualizar em loop
+spawn(function()
+    while wait(1) do
+        if valorLabel then
+            valorLabel.Text = "Status: " .. tostring(quantidadeItem)
+        end
+    end
+end)
+───────────────────────────────────────────────────────────────────
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 11. SOLUÇÃO DE PROBLEMAS                                      │
+└─────────────────────────────────────────────────────────────────┘
+
+11.1 - PROBLEMA: A UI NÃO APARECE
+
+CAUSAS POSSÍVEIS:
+• Não chamou KaisenUI:Show()
+• Erro no script
+• URL incorreta
+
+SOLUÇÃO:
+───────────────────────────────────────────────────────────────────
+-- Verifique se chamou Show()
+KaisenUI:Show()
+
+-- Verifique se a UI foi criada
+print(KaisenUI) -- Deve retornar uma tabela
+───────────────────────────────────────────────────────────────────
+
+11.2 - PROBLEMA: A TECLA NÃO FUNCIONA
+
+CAUSAS POSSÍVEIS:
+• Tecla configurada errada
+• Conflito com outras teclas
+
+SOLUÇÃO:
+───────────────────────────────────────────────────────────────────
+-- Tente outra tecla
+ToggleKey = Enum.KeyCode.F  -- ou H, R, etc
+
+-- Ou force a UI a abrir
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+11.3 - PROBLEMA: ELEMENTOS NÃO APARECEM
+
+CAUSAS POSSÍVEIS:
+• Não está dentro de uma seção
+• Erro na sintaxe
+
+SOLUÇÃO:
+───────────────────────────────────────────────────────────────────
+-- Certifique-se de que está dentro de uma seção
+KaisenUI:AddSection("Exemplo", "📁", function(section)
+    -- Coloque os elementos AQUI, dentro da função
+    KaisenUI:AddButton("Teste", section, function()
+        print("Funciona!")
+    end)
+end)
+───────────────────────────────────────────────────────────────────
+
+11.4 - PROBLEMA: ERRO NO SCRIPT
+
+CAUSAS POSSÍVEIS:
+• Sintaxe incorreta
+• Falta de fechamento de parênteses/chaves
+
+SOLUÇÃO:
+───────────────────────────────────────────────────────────────────
+-- Verifique os parênteses e colchetes
+local KaisenUI = loadstring(game:HttpGet("URL"))({  -- ← Abre configurações
+    Title = "Meu Script",
+    ToggleKey = Enum.KeyCode.G
+})  -- ← Fecha configurações
+
+-- Cada seção precisa fechar corretamente
+KaisenUI:AddSection("Exemplo", "📁", function(section)
+    -- Código
+end)  -- ← Fecha a seção
+───────────────────────────────────────────────────────────────────
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 12. FAQ (PERGUNTAS FREQUENTES)                                │
+└─────────────────────────────────────────────────────────────────┘
+
+P: Posso ter quantas seções quiser?
+R: Sim! Quantas você quiser. Não há limite.
+
+P: Posso mudar a tecla depois de criar?
+R: Sim, configure no ToggleKey.
+
+P: A UI funciona em todos os jogos?
+R: Sim, desde que o jogo permita scripts.
+
+P: Posso usar em jogos com anti-cheat?
+R: Depende do anti-cheat. Alguns podem detectar.
+
+P: Como salvar as configurações?
+R: Use writefile() e readfile() para salvar em JSON.
+
+P: Posso criar meu próprio elemento?
+R: Sim, você pode criar funções personalizadas.
+
+P: O que fazer se a UI travar?
+R: Tente reiniciar o script ou usar KaisenUI:Destroy()
+
+P: Posso mudar o tamanho da UI depois?
+R: Sim, recrie a UI com novas dimensões.
+
+P: A UI consome muito desempenho?
+R: Não, o framework é leve e otimizado.
+
+P: Posso usar em dispositivos móveis?
+R: Sim, mas a navegação pode ser diferente.
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 13. REFERÊNCIA RÁPIDA                                         │
+└─────────────────────────────────────────────────────────────────┘
+
+13.1 - CONFIGURAÇÕES
+
+Tabela de configurações rápidas:
+
+┌─────────────────────────────────────────────────────────────────┐
+│ Title           │ Título da UI                                │
+│ Subtitle        │ Subtítulo                                   │
+│ ToggleKey       │ Tecla para abrir/fechar                     │
+│ MainColor       │ Cor principal                               │
+│ BackgroundColor │ Cor de fundo                                │
+│ SidebarColor    │ Cor da barra lateral                        │
+│ ButtonColor     │ Cor dos botões                              │
+│ TextColor       │ Cor do texto                                │
+│ Width           │ Largura em pixels                           │
+│ Height          │ Altura em pixels                            │
+└─────────────────────────────────────────────────────────────────┘
+
+13.2 - MÉTODOS
+
+┌─────────────────────────────────────────────────────────────────┐
+│ KaisenUI:Show()          │ Mostra a UI                        │
+│ KaisenUI:Hide()          │ Esconde a UI                       │
+│ KaisenUI:Toggle()        │ Alterna a UI                       │
+│ KaisenUI:Destroy()       │ Remove a UI                        │
+└─────────────────────────────────────────────────────────────────┘
+
+13.3 - ELEMENTOS
+
+┌─────────────────────────────────────────────────────────────────┐
+│ AddSection(nome, icone, function)        │ Cria seção         │
+│ AddToggle(nome, section, function)       │ Cria toggle        │
+│ AddButton(nome, section, function)       │ Cria botão         │
+│ AddSlider(nome, min, max, padrão, function)│ Cria slider      │
+│ AddTextInput(nome, placeholder, function) │ Cria campo texto   │
+│ AddDropdown(nome, opções, padrão, function)│ Cria dropdown    │
+└─────────────────────────────────────────────────────────────────┘
+
+13.4 - EXEMPLO RÁPIDO
+
+O script mais básico possível:
+
+───────────────────────────────────────────────────────────────────
+local KaisenUI = loadstring(game:HttpGet("URL"))({
+    Title = "Meu Script",
+    ToggleKey = Enum.KeyCode.G
+})
+
+KaisenUI:AddSection("Principal", "🏠", function(section)
+    KaisenUI:AddToggle("Ativar", section, function(estado)
+        print("Ativado: " .. tostring(estado))
+    end)
+end)
+
+KaisenUI:Show()
+───────────────────────────────────────────────────────────────────
+
+
+═══════════════════════════════════════════════════════════════════
+                    FIM DO MANUAL COMPLETO
+═══════════════════════════════════════════════════════════════════
+
+📝 CRIADO POR KAISEN
+📅 VERSÃO 2.0
+📌 ÚLTIMA ATUALIZAÇÃO: 2026
